@@ -1,36 +1,9 @@
-//left panel should have Meal Details
-//Inputs
-//  base meal price
-//  tax rate
-//  tip percent
-//
-//Submit or Cancel
-//
-//Top Right - Customer Charges
-//Displays Subtotal and Tip with Total of last equation
-//
-//Bottom Right - My Earning Info
-//displays a running total of 
-//  meals made(STORE) 
-//  Tip total(STORE) 
-//  avg tip perMeal (total tip / # of meals)
-// 
-// render right panels in js
-// render left panel in html
-//
-// right-top panel takes newest item in DB
-//p
-//      basePrice,
-//            taxRate,
-//                  tipPercent,
-//
-
 function earningCalc(){
   let totalTip = 0
   STORE.meals.forEach(e => {
     totalTip += e.basePrice * (e.tipPercent/100)
   })
-  return totalTip
+  return totalTip.toFixed(2)
 }
 function earningsSnip(){
   let tipTotal = earningCalc()
@@ -40,7 +13,7 @@ function earningsSnip(){
     <ul>
       <li>Tip Total: ${tipTotal}</li>
       <li>Number of Meals: ${ammountOfMeals}</li>
-      <li>Avg Tip Per Meal: ${avgTip}</li>
+      <li>Avg Tip Per Meal: ${avgTip.toFixed(2)}</li>
     </ul>
   `
 }
@@ -74,6 +47,12 @@ function createObj(basePrice, taxRate, tipPercent){
   return {'basePrice': basePrice, 'taxRate': taxRate, 'tipPercent': tipPercent}
 }
 
+function resetForm(){
+  $('#base-meal-price').val('')
+  $('#tax-rate').val('')
+  $('#tip-percent').val('')
+}
+
 function mealDetailsToStore(){
   let basePrice = $('#base-meal-price').val()
   let taxRate = $('#tax-rate').val()
@@ -94,16 +73,36 @@ function mealDetailsToStore(){
 //}
 
 function buttonSubmitWatch(){
-  $('.js-data-field').on('click', 'button', event => {
+  $('.js-data-field').on('click', '#submit', event => {
     event.preventDefault()
       mealDetailsToStore()
       renderEarningsInfo()
+      resetForm()
+  })
+}
+
+function resetButton(){
+  $('.js-reset').on('click', function(){
+    STORE.meals.length = 0
+    STORE.numMeal = 0
+    renderEarningsInfo()
+    resetForm()
+    $('.js-cus-changes').html(customerChangesSnip(0, 0, 0))
+  })
+}
+
+function cancelButton(){
+  $('#js-cancel').on('click', event => {
+    event.preventDefault()
+    resetForm()
   })
 }
 
 function start(){
   buttonSubmitWatch()
   earningCalc()
+  resetButton()
+  cancelButton()
 }
 
 $(start)
