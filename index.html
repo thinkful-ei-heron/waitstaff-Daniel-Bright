@@ -6,8 +6,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  
+  <main>
+    <div class="container">
+      <div class="left">
+        <h3>Enter the Meal Deals</h3>
+        <form>
+          <fieldset class="js-data-field">
+            <label for="base-meal-price">Base Meal Price</label>
+            <input type="text" id="base-meal-price"><br>
+            <label for="tax-rate">Tax Rate %</label>
+            <input type="text" id="tax-rate"><br>
+            <label for="tip-percent">Tip Percentage</label>
+            <input type="text" id="tip-percent"><br>
+            <button type="submit">Submit</button>
+          </fieldset>
+        </form>
+      </div>
+      <div class="right">
+        <div class="top">
+          <h3>Customer Charges</h3>
+          <span class="js-cus-changes"></span>
+        </div>
+        <div class="bottom">
+          <h3>My Earnings Info</h3>
+          <span class="js-earn-info"></span>
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="store.js"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

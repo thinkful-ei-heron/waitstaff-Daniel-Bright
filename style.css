@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+   }
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+main {
+  width: 100%;
+}
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+.left {
+  display: inline;
+  width: 50%;
+  float: left;
+  padding: 2%;
+}
+
+.right{
+  display: inline;
+  width: 50%;
+  float: right;
+  padding: 2%;
+}
