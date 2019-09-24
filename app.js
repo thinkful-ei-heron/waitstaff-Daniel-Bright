@@ -29,7 +29,6 @@ function earningCalc(){
   let totalTip = 0
   STORE.meals.forEach(e => {
     totalTip += e.basePrice * (e.tipPercent/100)
-    console.log(totalTip)
   })
   return totalTip
 }
@@ -84,11 +83,21 @@ function mealDetailsToStore(){
   renderCustomerChanges(basePrice, taxRate, tipPercent)
 }
 
+//function checkInput(){
+//  $('input').each(function() {
+//    if(typeof this.value !== /[0-9]/gm) {
+//      return false
+//    }else{
+//      return true
+//    }
+//  })
+//}
+
 function buttonSubmitWatch(){
   $('.js-data-field').on('click', 'button', event => {
     event.preventDefault()
-    mealDetailsToStore()
-    renderEarningsInfo()
+      mealDetailsToStore()
+      renderEarningsInfo()
   })
 }
 
