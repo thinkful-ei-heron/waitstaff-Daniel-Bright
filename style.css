@@ -40,6 +40,10 @@ input {
   color #d1efb5;
 }
 
+label {
+  font-family: 'Open Sans', sans-serif;
+}
+
 span {
   font-family: 'Open Sans', sans-serif;
 }
@@ -66,6 +70,7 @@ span {
   padding: 0;
 }
 .bottom {
+  height: 50vh;
   border-top: 1px solid black;
 }
 
